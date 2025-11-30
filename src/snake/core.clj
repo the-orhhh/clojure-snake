@@ -52,14 +52,26 @@
     "d" :right
     nil))
 
+(defn render [{:keys [snake food board]}]
+  (let [width  (:width board)
+        height (:height board)
+        empty-row (vec (repeat width ". "))
+        empty-board (vec (repeat height empty-row))
+        board-with-food (assoc-in empty-board [(second food) (first food)] "* ")
+        board-with-snake (reduce (fn [b [x y]] (assoc-in b [y x] "# ")) board-with-food snake)]
+    (doseq [row board-with-snake]
+      (println (apply str row)))))
+
 (defn -main []
   (loop [state initial-state
          t 0]
-    (println "tick" t "state" (select-keys state [:snake :dir :food :alive?]))
+    ;(println "tick" t "state" (select-keys state [:snake :dir :food :alive?]))
     (Thread/sleep 200)
     (when (:alive? state)
+      (render state)
       (let [input-str (read-line)
             state-with-input (if (and input-str (not (empty? input-str)))
                                (set-dir state (parse input-str))
                                state)]
         (recur (step state-with-input) (inc t))))))
+    
