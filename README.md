@@ -1,20 +1,20 @@
 # snake
 
-FIXME: description
-
+A 'snake' implementation that I haven't gotten to rendering yet.
 ## Installation
 
-Download from https://example.com/FIXME.
+Clone it and run it...
 
 ## Usage
 
 FIXME: explanation
 
     $ java -jar snake-0.1.0-standalone.jar [args]
+^ Line above definitely doesn't work
 
 ## Options
 
-FIXME: listing of options this app accepts.
+Edit the source code for options :)
 
 ## Examples
 
@@ -30,7 +30,7 @@ FIXME: listing of options this app accepts.
 
 ## License
 
-Copyright © 2025 FIXME
+Copyright © 2025 Or Harpazi
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
