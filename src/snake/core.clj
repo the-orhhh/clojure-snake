@@ -1,4 +1,5 @@
-(ns snake.core)
+(ns snake.core
+  (:gen-class))
 
 (def initial-state
   {:snake [[5 3] [5 4] [5 5]]
@@ -36,13 +37,12 @@
            :alive? is-alive?)))
 
 (defn set-dir [{:keys [dir] :as state} input]
-  ; Only allow direction change if not opposite to current direction
-  (if (or (= [input dir] [:up :down])
-          (= [input dir] [:down :up])
-          (= [input dir] [:left :right])
-          (= [input dir] [:right :left]))
-    (assoc state :dir (:dir state))
-    (assoc state :dir input)))
+  (if (and input (not (or (= [input dir] [:up :down])
+                           (= [input dir] [:down :up])
+                           (= [input dir] [:left :right])
+                           (= [input dir] [:right :left]))))
+    (assoc state :dir input)
+    state))
 
 (defn parse [input]
   (case input

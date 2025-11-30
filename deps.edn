@@ -1,0 +1,11 @@
+{:paths ["src"] ;; project paths
+ :deps {}       ;; project deps
+
+ :aliases
+ {;; Run with clj -T:build function-in-build
+  :build
+      {:deps
+          {io.github.clojure/tools.build {:git/tag "v0.10.11" :git/sha "c6c670a"}}
+          :ns-default build}
+  :run
+  {:main-opts ["-m" "snake.core"]}}}
